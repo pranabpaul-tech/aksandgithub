@@ -42,6 +42,9 @@ jobs:
       with:
         namespace: newdev
         manifests: |
+          manifests/mysqlsecret.yaml
+          manifests/mysqlset.yaml
+          manifests/mysqlservice.yaml
           manifests/deployment.yml
           manifests/service.yml
         images: |
