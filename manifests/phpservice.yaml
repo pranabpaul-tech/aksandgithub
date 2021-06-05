@@ -35,7 +35,6 @@ metadata:
   selfLink: /api/v1/namespaces/newdev/services/phpdeploy
   uid: 95b2dd6c-453b-4e1a-bbf1-f2e0e611bb07
 spec:
-  clusterIP: 10.1.0.19
   externalTrafficPolicy: Cluster
   ports:
   - nodePort: 31569
