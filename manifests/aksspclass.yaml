@@ -14,7 +14,7 @@ spec:
   parameters:
     usePodIdentity: "false"
     useVMManagedIdentity: "true"
-    userAssignedIdentityID: ed4a629c-11f8-4496-98f2-16c972e656ff
+    userAssignedIdentityID: a9d40096-8b18-4d5b-9e67-884882214220
     keyvaultName: aksphpkeyvault
     cloudName: ""          #[OPTIONAL] if not provided, azure environment will default to AzurePublicCloud
     cloudEnvFileName: ""   # [OPTIONAL] use to define path to file for populating azure environment
