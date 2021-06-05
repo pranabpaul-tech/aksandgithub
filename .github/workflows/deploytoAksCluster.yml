@@ -45,8 +45,10 @@ jobs:
           manifests/mysqlsecret.yaml
           manifests/mysqlset.yaml
           manifests/mysqlservice.yaml
-          manifests/deployment.yml
-          manifests/service.yml
+          manifests/phpsecret.yaml
+          manifests/aksspclass.yaml
+          manifests/phpdeploy.yaml
+          manifests/phpservice.yaml
         images: |
           aksday3acr.azurecr.io/aksday3:${{ github.sha }}
         imagepullsecrets: |
