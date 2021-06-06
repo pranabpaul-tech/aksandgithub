@@ -49,8 +49,6 @@ jobs:
           manifests/aksspclass.yaml
           manifests/phpdeploy.yaml
           manifests/phpservice.yaml
-          manifests/deployment.yml
-          manifests/service.yml
         images: |
           aksday3acr.azurecr.io/aksday3:${{ github.sha }}
         imagepullsecrets: |
