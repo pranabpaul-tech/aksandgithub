@@ -1,6 +1,6 @@
 <?php
     // Attempt MySQL server connection. Assuming you are running MySQL
-    include 'conn.inc';
+    includ 'conn.inc';
         
     // Check connection
     if($conn === false)
