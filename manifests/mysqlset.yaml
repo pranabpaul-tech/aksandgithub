@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
       - name: mysql-container
-        image: mysql
+        #image: mysql
+        image: acrgithubcicd.azurecr.io/docker-build-mysql:v1
         env:
         - name: MYSQL_ROOT_PASSWORD
           # value: password

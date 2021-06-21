@@ -32,7 +32,8 @@ spec:
           volumeAttributes:
             secretProviderClass: aksspclass  
       containers:
-      - image: aksday3acr.azurecr.io/aksday3
+      #- image: aksday3acr.azurecr.io/aksday3
+      - image: acrgithubcicd.azurecr.io/docker-build-php:v1
         imagePullPolicy: Always
         name: docker-build-php
         volumeMounts:
@@ -51,6 +52,7 @@ spec:
               name: phpsecret
               key: mysqluser
         - name: MYSQL_PASS
+          #value: password123
           valueFrom:
             secretKeyRef:
               name: mysqlserver
