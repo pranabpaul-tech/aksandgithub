@@ -108,23 +108,14 @@ exit
 kubectl create secret generic phpsecret -n newdev --from-literal=mysqlserver=mysqlset-0.mysqlservice.newdev.svc.cluster.local --from-literal=mysqluser=aksuser --from-literal=mysqldb=mydb --dry-run=client -o yaml > phpsecret.yaml
 kubectl apply -f phpsecret.yaml
 
-#create a separate namespace to install csi driver and provider pods
-kubectl create namespace csi
-helm repo add secrets-store-csi-driver https://raw.githubusercontent.com/kubernetes-sigs/secrets-store-csi-driver/master/charts -n csi
-helm install csi-secrets-store secrets-store-csi-driver/secrets-store-csi-driver -n csi --set grpcSupportedProviders="azure;gcp" -n csi
-kubectl apply -f https://raw.githubusercontent.com/Azure/secrets-store-csi-driver-provider-azure/master/deployment/provider-azure-installer.yaml -n csi
-kubectl get po -n csi
+#create a separate namespace to install akv2k8s driver and provider pods
+kubectl create ns akv2k8s
+helm repo add spv-charts https://charts.spvapi.no
+helm repo update
+helm upgrade --install akv2k8s spv-charts/akv2k8s --namespace akv2k8s
 
-#check the clientid of the aks cluster and copy it
-az aks show -g aksday3group -n aksday3 --query identityProfile.kubeletidentity.clientId -o tsv
-
-#get the tenantid from output of the following command
-az keyvault show --name aksphpkeyvault
-
-#open file aksspclass.yaml and change the value of "userAssignedIdentityID" to clientid you got above and "tenantId" field to tenantid we got above. Also change the subscriptionId field value to current subscription id.
-
-#create the secret provider class to connect to Azure Key Vault
-kubectl create -f aksspclass.yaml
+#create the AzureKeyVaultSecret yaml to connect to Azure Key Vault
+kubectl create -f secret-sync.yaml
 
 #login to ACR and show the full path of the ACR
 az acr login --name aksDay3acr
